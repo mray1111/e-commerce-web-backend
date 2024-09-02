@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors'); // Import the cors package
 const dotenv = require('dotenv');
 const cloudinary = require('cloudinary');
 
@@ -30,10 +29,6 @@ cloudinary.config({
   api_secret: CLOUDINARY_API_SECRET,
 });
 
-// Use cors middleware with default settings
-app.use(cors());
-//  routes and other middleware here
-app.use(express.json());
 
 const server = app.listen(PORT, () => {
   console.log(`Server is working on http://localhost:${PORT}`);
