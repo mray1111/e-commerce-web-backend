@@ -13,12 +13,14 @@ const errorMiddleware=require("./middleware/error");
 dotenv.config({path:"../backend/config/config.env"})
 
 
-app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
-
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3000", // Replace with your frontend's URL
+    credentials: true,
+}));
 //Route Imports
 const product=require("./routes/productRoute");
 const user=require("./routes/userRoutes");
