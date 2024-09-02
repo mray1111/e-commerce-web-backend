@@ -1,26 +1,25 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cloudinary = require('cloudinary');
+const app = require("./app");
+const dotenv=require("dotenv");
+const cloudinary=require("cloudinary");
 
-const connectDatabase = require('./config/database.js');
-const app = express();
-
+const connectDatabase=require("./config/database.js");
 // Handling Uncaught Exception
-process.on('uncaughtException', (err) => {
-  console.log(`Error: ${err.message}`);
-  console.log(`Shutting down the server due to Uncaught Exception`);
-  process.exit(1);
-});
+process.on("uncaughtException", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Uncaught Exception`);
+    process.exit(1);
+  });
 
-// Config
-dotenv.config({ path: 'backend/config/config.env' });
+//config
+  dotenv.config({path:"backend/config/config.env"});
 
-// Connecting to Database
+//connecting to database
+
 connectDatabase();
 
-const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME || 'dbzkygnbh';
-const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || '433441131784874';
-const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || 'ErfgidwpufrSCjAjuWx8gQS8f3Q';
+const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME || "dbzkygnbh";
+const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || "433441131784874";
+const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || "ErfgidwpufrSCjAjuWx8gQS8f3Q";
 const PORT = process.env.PORT || 4000;
 
 cloudinary.config({
@@ -31,15 +30,17 @@ cloudinary.config({
 
 
 const server = app.listen(PORT, () => {
-  console.log(`Server is working on http://localhost:${PORT}`);
-});
-
-// Unhandled Promise Rejection
-process.on('unhandledRejection', (err) => {
-  console.log(`Error: ${err.message}`);
-  console.log(`Shutting down the server due to Unhandled Promise Rejection`);
-
-  server.close(() => {
-    process.exit(1);
+    console.log(`Server is working on http://localhost:${PORT}`);
   });
-});
+
+ // console.log(hereerror)
+  
+  // Unhandled Promise Rejection
+  process.on("unhandledRejection", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+  
+    server.close(() => {
+      process.exit(1);
+    });
+  });
