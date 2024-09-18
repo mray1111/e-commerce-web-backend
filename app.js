@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 app.use(cors({
-    origin:"*", // Replace with your frontend's URL
+    origin:["https://famous-zuccutto-192843.netlify.app"], // Replace with your frontend's URL
     credentials: true,
     allowedHeaders: ["Authorization", "Content-Type"],
 }));
